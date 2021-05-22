@@ -1,0 +1,36 @@
+<div class="row d-flex justify-content-center align-items-center" id="contact-frame">
+    <form #contactPost="ngForm" (ngSubmit)="onSubmit(contactPost.value)" class="bg-light">
+        <fieldset class="d-flex justify-content-center">
+            <div class="form-group">
+                <legend>Contact</legend>
+                <div class="input-control">
+                    <input type="text" class="form-control"  name="name" ngModel aria-describedby="nameHelp" placeholder="Your Name">
+                </div>              
+                <hr class="my-4">
+                <div class="input-control">
+                    <input type="text" class="form-control"  name="emailAddress" ngModel aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
+                <hr class="my-4">
+                <div class="input-control">
+                    <input type="text" class="form-control"  name="subject" ngModel aria-describedby="subjectHelp" placeholder="Enter subject">
+                </div>
+                <hr class="my-4">
+                <label for="message">Message</label>
+                <textarea class="form-control"  name="message" ngModel rows="3" style="margin-top: 0px; margin-bottom: 0px; height: 108px;"></textarea>
+                <hr class="my-1">
+                <div style="display:-ms-inline-grid">
+                    <button type="submit" name="save" value="Save" class="btn btn-primary" style="justify-self: start;">
+                        <i class="far fa-paper-plane fa-lg"></i>
+                        Send
+                    </button>
+                    <button class="btn btn-primary" (click)="onCheckDataBase()" style="justify-self: end;margin-left: 10px;">
+                        <i class="fa fa-database" aria-hidden="true"></i>
+                        Check DB
+                    </button>
+                </div>
+                
+            </div>
+        
+        </fieldset>
+    </form>
+</div>
