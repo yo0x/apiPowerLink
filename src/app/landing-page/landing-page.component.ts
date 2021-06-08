@@ -19,10 +19,19 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  // onSubmit(data: any) {
+  //   this.http.post('https://api.powerlink.co.il/api/record/account', data, {
+  //     HttpHeaders: {
+  //       'Content-Type': 'application/json',
+  //       'tokenId': '51d889d9-7e7f-4529-8d53-5157865a887a'
+  //     }
+  //   }).subscribe((data) => {
+  //     console.warn(data);
+  //   });
+  // }
   onSubmit(data: any) {
-    this.http.post('https://api.powerlink.co.il/api/record/account', data).subscribe((data) => {
-      console.warn(data);
-    });
+    this.dataService.postContact(data);
   }
 
 }
