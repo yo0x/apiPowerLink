@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Client } from './models/client.model';
-<<<<<<< HEAD
-import { HttpClient } from '@angular/common/http';
-// const https = require('https');
-=======
+
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
->>>>>>> 03dc810b9e4a6d8a8a728349ab238dbb63448341
+
 
 @Injectable({
   providedIn: 'root'
