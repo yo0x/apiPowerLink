@@ -1,22 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Client } from './models/client.model';
+<<<<<<< HEAD
 import { HttpClient } from '@angular/common/http';
 // const https = require('https');
+=======
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+>>>>>>> 03dc810b9e4a6d8a8a728349ab238dbb63448341
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  powerlink_create_url = 'https://api.powerlink.co.il/api/record/account';
+
+  powerlink_create_url = 'http://localhost:5555';
 
 
   constructor(private _http: HttpClient) { }
 
   postContact(data: any){
-    this._http.post(this.powerlink_create_url,data,{headers: {
+    let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'tokenId': ''
-    }});
+      'tokenId': '51d889d9-7e7f-4529-8d53-5157865a887a'});
+      let options = { headers: headers };
+ 
+
+    this._http.post(this.powerlink_create_url,data,options);
     console.warn(data);
   }
 }
