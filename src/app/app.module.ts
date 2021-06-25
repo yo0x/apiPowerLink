@@ -7,12 +7,22 @@ import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { DataService } from './data.service';
 import { HomeComponent } from './home/home.component';
+import { SchedComponent } from './sched/sched.component';
+import { AlterComponent } from './alter/alter.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
+import { VerifyerComponent } from './verifyer/verifyer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
-    HomeComponent
+    HomeComponent,
+    SchedComponent,
+    AlterComponent,
+    SignupComponent,
+    LoginComponent,
+    VerifyerComponent
   ],
   imports: [
     BrowserModule,
