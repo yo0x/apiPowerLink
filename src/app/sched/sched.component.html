@@ -1,4 +1,3 @@
-<form action="#" id="apt-new">
     <!--Step 0: get basic info-->
     <div class="frm-container">
         <div class="frm-item">
@@ -12,14 +11,50 @@
         </div>
         <div class="frm-item">
             <span class="frm-title">שעות פנויות בתאריך</span>
-            <input type="date" name="date" id="date" [(ngModel)]="this.chosenDate" />
+            <input type="date" name="date" id="date" [(ngModel)]="this.chosenDate" (change)="fillHours()" />
         </div>
     </div>
 
     <!--Step 1: select available appointment-->
     <div *ngIf="(this.chosenDate != null || this.chosenDate != undefined)
      && (this.price != null || this.price != undefined)">
-     test
+        <a *ngFor="let h of availableHours" dir="ltr" (click)="addTime(h)">
+         {{padNumToStr(h.hour, 2)}} : {{padNumToStr(h.min, 2)}}
+        </a> <br />
     </div>
-</form>
 
+    <!--Step 2: fill costumer details-->
+    <form (submit)="sendAcceptenceCode()">
+        <div *ngIf="canProccedToPayment">
+            <div>
+                <span>שם פרטי:</span>
+                <input type="text" name="name" [(ngModel)]="name_first" />
+            </div>
+
+            <div>
+                <span>שם משפחה</span>
+                <input type="text" [(ngModel)]="name_last" name="last" />
+            </div>
+
+            <div>
+                <span>מס' טלפון</span>
+                <input type="text" name="phone" [(ngModel)]="tmp_phone" />
+            </div>
+
+            <div>
+                <span>אימייל:</span>
+                <input type="email" name="mail" [(ngModel)]="email" />
+            </div>
+
+            <div>
+                <input type="submit" value="לאישור" />
+            </div>
+        </div>
+    </form>
+
+    <app-verifyer *ngIf="canAccept" [accept]="canCC" (afterFunc)="sendToServer()"></app-verifyer>
+
+    <div *ngIf="canCC">
+        תור נקבע!<br />
+        <a (click)="gotoCC()">שלם באשראי</a>
+    </div>
