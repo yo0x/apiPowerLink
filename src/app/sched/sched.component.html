@@ -1,1 +1,25 @@
-<p>sched works!</p>
+<form action="#" id="apt-new">
+    <!--Step 0: get basic info-->
+    <div class="frm-container">
+        <div class="frm-item">
+            <span class="frm-title">בחר סוג תספורת</span>
+            <select name="haircuts" id="haircuts" [(ngModel)]="currentHc" (change)="updatePrice()">
+                <option *ngFor="let hc of haircuts" [value]="hc.type">
+                    {{hc.name}}
+                </option>
+            </select>
+            <span id="price" *ngIf="this.price" [textContent]="this.price"></span>
+        </div>
+        <div class="frm-item">
+            <span class="frm-title">שעות פנויות בתאריך</span>
+            <input type="date" name="date" id="date" [(ngModel)]="this.chosenDate" />
+        </div>
+    </div>
+
+    <!--Step 1: select available appointment-->
+    <div *ngIf="(this.chosenDate != null || this.chosenDate != undefined)
+     && (this.price != null || this.price != undefined)">
+     test
+    </div>
+</form>
+

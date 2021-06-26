@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
 import { DataService } from './data.service';
 import { HomeComponent } from './home/home.component';
 import { SchedComponent } from './sched/sched.component';
@@ -16,7 +15,6 @@ import { VerifyerComponent } from './verifyer/verifyer.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LandingPageComponent,
     HomeComponent,
     SchedComponent,
     AlterComponent,
