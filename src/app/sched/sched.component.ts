@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataToSend } from './dataToSend';
 import { HaircutVec } from './haircut';
 import { HourVec } from './hourvec';
 import { PhoneNumber, PhoneNumberErrors } from './phonenumber';
@@ -75,10 +76,14 @@ export class SchedComponent implements OnInit {
   }
   
   sendToServer(): void {
-    console.log("Please pretend as though all the information was sent");
-  }
-
-  gotoCC(): void {
-    alert("Some Credit Card Company");
+    const json_obj = new DataToSend(
+      this.name_first,
+      this.name_last,
+      this.phone??new PhoneNumber('123-1234567'),
+      this.chosenDate??new Date(),
+      this.currentHc??"",
+      this.email
+    ).getJSON();
+    console.log(json_obj);
   }
 }
