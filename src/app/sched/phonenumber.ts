@@ -1,6 +1,3 @@
-import { isNull } from "@angular/compiler/src/output/output_ast";
-import { isDefined } from "@angular/compiler/src/util";
-
 export enum PhoneNumberErrors {
     IncorrectFormat,
     IncorrectPhoneCompany,
@@ -13,8 +10,12 @@ export class PhoneNumber {
     public err?: PhoneNumberErrors;
 
     constructor(phone_num: string) {
+        if(phone_num == "") {
+            this.err = PhoneNumberErrors.NotANumber;
+            return
+        }
         let tmp = phone_num.split("-");
-        if(tmp.length != 2) this.err = PhoneNumberErrors.IncorrectFormat;
+        if(tmp.length != 2) this.err = this.err??PhoneNumberErrors.IncorrectFormat;
         if(tmp[0].length != 3) this.err = this.err??PhoneNumberErrors.IncorrectPhoneCompany;
         if(tmp[1].length != 7) this.err = this.err??PhoneNumberErrors.IncorrectPrefix;
         if(isNaN(Number(tmp[0])) || isNaN(Number([tmp[1]]))) {

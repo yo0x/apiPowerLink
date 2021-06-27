@@ -68,10 +68,38 @@ export class SchedComponent implements OnInit {
   canCC: boolean = false;
   canAccept: boolean = false;
 
+  name_first_empty: boolean = false;
+  name_last_empty: boolean = false;
+  phone_err_str: string = "";
+
   sendAcceptenceCode(): void {
     this.phone = new PhoneNumber(this.tmp_phone);
-    if(this.phone.isOk()) {
+    if(this.phone_err_str != "") this.phone_err_str = "";
+    
+    if(this.phone.isOk() && this.name_first != "" && this.name_last != "") {
       this.canAccept = true;
+    } else {
+      this.name_first_empty = this.name_first === "";
+      this.name_last_empty = this.name_last === "";
+      if(!this.phone.isOk()) {
+        this.changePhoneErrors(this.phone.err??PhoneNumberErrors.NotANumber);
+      }
+    }
+  }
+
+  private changePhoneErrors(err: PhoneNumberErrors): void {
+    switch(err) {
+      case PhoneNumberErrors.IncorrectFormat:
+        this.phone_err_str = "הפורמט שגוי";
+        break;
+      case PhoneNumberErrors.IncorrectPhoneCompany:
+        this.phone_err_str = "חברה זאת לא קיימת";
+        break;
+      case PhoneNumberErrors.IncorrectPrefix:
+        this.phone_err_str = "יותר מידי מספרים";
+        break;
+      case PhoneNumberErrors.NotANumber:
+        this.phone_err_str = "לא נרשם מספר"
     }
   }
   

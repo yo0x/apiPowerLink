@@ -29,16 +29,19 @@
             <div>
                 <span>שם פרטי:</span>
                 <input type="text" name="name" [(ngModel)]="name_first" />
+                <span *ngIf="name_first_empty">שדה חובה</span>
             </div>
 
             <div>
                 <span>שם משפחה</span>
                 <input type="text" [(ngModel)]="name_last" name="last" />
+                <span *ngIf="name_last_empty">שדה חובה</span>
             </div>
 
             <div>
                 <span>מס' טלפון</span>
                 <input type="text" name="phone" [(ngModel)]="tmp_phone" />
+                <span [textContent]="phone_err_str"></span>
             </div>
 
             <div>
