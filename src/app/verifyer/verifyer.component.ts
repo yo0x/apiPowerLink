@@ -15,11 +15,15 @@ export class VerifyerComponent implements OnInit {
   code: string = "";
 
   @Input() accept: boolean = false;
+  @Output() acceptChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   @Output() afterFunc: EventEmitter<void> = new EventEmitter<void>();
 
   onSub(): void {
     // it 69420 in hex :P
     this.accept = this.code === "0x10f2c";
+    this.acceptChange.emit(this.accept);
+
     this.afterFunc.emit();
   }
 }

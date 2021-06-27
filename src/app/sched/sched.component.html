@@ -47,14 +47,15 @@
             </div>
 
             <div>
-                <input type="submit" value="לאישור" />
+                <input type="submit" name="s" value="לאישור" />
             </div>
         </div>
     </form>
+    <div *ngIf="canAccept">הקוד הוא 0x10f2c</div>
 
-    <app-verifyer *ngIf="canAccept" [accept]="canCC" (afterFunc)="sendToServer()"></app-verifyer>
+    <app-verifyer *ngIf="canAccept" [(accept)]="canCC" (afterFunc)="sendToServer()"></app-verifyer>
 
     <div *ngIf="canCC">
         תור נקבע!<br />
-        <a (click)="gotoCC()">שלם באשראי</a>
+        <a onclick="alert('Some Credit Card Company')">שלם באשראי</a>
     </div>
