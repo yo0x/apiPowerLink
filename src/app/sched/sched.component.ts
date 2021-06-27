@@ -33,12 +33,12 @@ export class SchedComponent implements OnInit {
 
   // stub, should retrive from db
   fillHours(): void {
-    this.availableHours = [
-      new HourVec(7, 0),
-      new HourVec(10, 15),
-      new HourVec(10, 45),
-      new HourVec(15, 0)
-    ];
+    this.availableHours = [];
+    for(let h = 9; h < 18; h++) {
+      for(let m = 0; m < 60; m+=30) {
+        this.availableHours.push(new HourVec(h,m));
+      }
+    }
   }
 
   // aid to display hours.. should be private static but it throws an error for some reason 
@@ -48,11 +48,14 @@ export class SchedComponent implements OnInit {
     return this.padNumToStr("0" + s, total);
   }
 
+  // added for the design, save current hour, defaults too not-possible hour
+  cl: HourVec = new HourVec(1,2);
   addTime(t: HourVec) {
     // who the fuck came up with this stupid api?!
     // setHours returs a date primitive for some reason (i.e as dates are saved in computers)
     // and you need to use a copy-constructor for null-checking for some reason
     // otherwise it yield another date primitive.
+    this.cl = t;
     this.chosenDate = new Date(new Date(this.chosenDate??new Date()).setHours(t.hour,t.min));
     // no easy way too validate this otherwise
     this.canProccedToPayment = true;
@@ -75,6 +78,8 @@ export class SchedComponent implements OnInit {
   sendAcceptenceCode(): void {
     this.phone = new PhoneNumber(this.tmp_phone);
     if(this.phone_err_str != "") this.phone_err_str = "";
+    this.name_last_empty = false;
+    this.name_first_empty = false;
     
     if(this.phone.isOk() && this.name_first != "" && this.name_last != "") {
       this.canAccept = true;
