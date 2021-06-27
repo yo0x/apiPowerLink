@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-home',
@@ -8,25 +7,15 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router'
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router, private aroute: ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
+  show_sched: boolean = false
+
   navToSched(): void {
-    console.log("Schedual");
-  }
-
-  navToAlter(): void {
-    console.log("Alter");
-  }
-
-  navToSignup(): void {
-    console.log("Signup");
-  }
-
-  navToLogin(): void {
-    console.log("Login");
+    this.show_sched = !this.show_sched;
   }
 
 }
