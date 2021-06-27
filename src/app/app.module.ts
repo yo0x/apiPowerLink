@@ -11,6 +11,7 @@ import { AlterComponent } from './alter/alter.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { VerifyerComponent } from './verifyer/verifyer.component';
+import { TmpSelectorComponent } from './tmp-selector/tmp-selector.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { VerifyerComponent } from './verifyer/verifyer.component';
     AlterComponent,
     SignupComponent,
     LoginComponent,
-    VerifyerComponent
+    VerifyerComponent,
+    TmpSelectorComponent
   ],
   imports: [
     BrowserModule,
