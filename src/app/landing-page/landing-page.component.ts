@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Client } from '../models/client.model';
 import { DataService } from '../data.service';
+import {FormsModule, NgForm} from '@angular/forms'
+
 
 
 
@@ -30,8 +32,9 @@ export class LandingPageComponent implements OnInit {
   //     console.warn(data);
   //   });
   // }
-  onSubmit(data: any) {
+  onSubmit(data: any, myForm : NgForm) {
     this.dataService.postContact(data);
+    myForm.reset();
   }
 
 }
