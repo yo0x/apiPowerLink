@@ -9,7 +9,7 @@ import { User } from './user';
 })
 export class DataService {
   //TODO: change to actual address
-  powerlink_create_url = 'http://localhost:5000';
+  powerlink_create_url = 'https://api.powerlink.co.il/api/record/account';
 
   constructor(private _http: HttpClient) { }
 
