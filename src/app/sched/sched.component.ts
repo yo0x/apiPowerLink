@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 import { DataToSend } from './dataToSend';
 import { HaircutVec } from './haircut';
 import { HourVec } from './hourvec';
@@ -22,7 +23,7 @@ export class SchedComponent implements OnInit {
   canProccedToPayment: boolean = false;
 
 
-  constructor() { }
+  constructor(private _db: DataService) { }
 
   ngOnInit(): void {
   }
@@ -116,7 +117,8 @@ export class SchedComponent implements OnInit {
       this.chosenDate??new Date(),
       this.currentHc??"",
       this.email
-    ).getJSON();
-    console.log(json_obj);
+    );
+
+    this._db.postContact(json_obj);
   }
 }
